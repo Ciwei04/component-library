@@ -1,0 +1,36 @@
+name: nicecode flow     // 脚本名称
+
+on:
+  push:
+    branches: ['main']      // 监听哪个分支
+
+permissions:                
+  contents: read            
+  pages: write
+  id-token: write
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest         // 运行服务器环境
+    steps:
+      - uses: actions/checkout@v4            // 需要的依赖镜像
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - name: Setup pnpm                 // 安装 pnpm 依赖
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+      - run: pnpm install                // 安装项目依赖
+      - run: pnpm run npm:build          //  打包npm包
+      - run: pnpm run pub                //  发布npm包
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}         // 给于npm包的发布权限
+      - name: docs-build                                  // //  打包文档,如果你没有对应的文档，这里可以跳过不配置
+        run: pnpm run docs:build                          
+      - name: docs-deploy
+        uses: peaceiris/actions-gh-pages@v3              // 发布文档     
+        with:
+          github_token: ${{ secrets.ACTION_SECRET }}       // 给于仓库推送代码到 gh-page 分支的权限
+          publish_dir: ./docs-dist
