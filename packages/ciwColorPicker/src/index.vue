@@ -1,3 +1,4 @@
+<!--颜色选择器组件-->
 <template>
   <div ref="colorRef" class="v3-c-p" :class="size ? `v3-c-p-${size}` : null" @click="onClick">
     <div class="c-p-t">
