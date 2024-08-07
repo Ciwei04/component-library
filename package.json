@@ -1,0 +1,27 @@
+{
+  "name": "componentLibrary",
+  "version": "1.0.0",
+  "files": [
+    "dist/*",
+    "ciw-Color-Picker.d.ts"
+  ],
+  "main": "dist/ciw-Color-Picker.umd.js",
+  "module": "dist/ciw-Color-Picker.es.js",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vue-tsc": "^2.0.24"
+  }
+}
