@@ -52,7 +52,6 @@ import {
 import ColorPicker from "./component/ColorPicker.vue";
 
 export default defineComponent({
-  name: "cwColorPicker",
   components: {
     ColorPicker
   },

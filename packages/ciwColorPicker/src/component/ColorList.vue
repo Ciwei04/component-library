@@ -66,6 +66,7 @@ export default defineComponent({
   padding: 5px;
   border-radius: 10px;
   cursor: pointer;
+  box-sizing: unset !important;
 }
 
 .color-list .color:hover {

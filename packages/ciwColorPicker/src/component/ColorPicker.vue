@@ -169,6 +169,7 @@ export default defineComponent({
 
 <style>
 .color-picker {
+  box-sizing: unset !important;
   position: fixed;
   border-radius: 5px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.16);
